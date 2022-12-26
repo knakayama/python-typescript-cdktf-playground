@@ -24,6 +24,9 @@ editorconfig-checker = "^2.6.2"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.mypy]
+strict = true
+
 [tool.poe.tasks]
 
   [tool.poe.tasks.lint-ec]
@@ -35,11 +38,15 @@ build-backend = "poetry.core.masonry.api"
   [tool.poe.tasks.lint-black]
   cmd = "black ."
 
+  [tool.poe.tasks.lint-mypy]
+  cmd = "mypy app"
+
   [tool.poe.tasks.lint]
   sequence  = [
     "lint-ec",
     "lint-ruff",
     "lint-black",
+    "lint-mypy"
   ]
 
   [tool.poe.tasks.start]
