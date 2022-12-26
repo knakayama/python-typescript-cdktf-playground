@@ -36,7 +36,11 @@ build-backend = "poetry.core.masonry.api"
   cmd = "black ."
 
   [tool.poe.tasks.lint]
-  sequence  = ["lint-black", "lint-ruff", "lint-ec"]
+  sequence  = [
+    "lint-ec",
+    "lint-ruff",
+    "lint-black",
+  ]
 
   [tool.poe.tasks.start]
   cmd = "uvicorn main:app --reload --app-dir app"
