@@ -18,7 +18,6 @@ pre-commit = "^2.21.0"
 ruff = "^0.0.194"
 black = "^22.12.0"
 poethepoet = "^0.16.5"
-isort = "^5.11.4"
 editorconfig-checker = "^2.6.2"
 
 [build-system]
@@ -27,14 +26,14 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
 
-  [tool.poe.tasks.lint-isort]
-  cmd  = "isort ."
+  [tool.poe.tasks.lint-ruff]
+  cmd  = "ruff ."
 
   [tool.poe.tasks.lint-black]
   cmd = "black ."
 
   [tool.poe.tasks.lint]
-  sequence  = ["lint-black", "lint-isort"]
+  sequence  = ["lint-black", "lint-ruff"]
 
   [tool.poe.tasks.start]
   cmd = "uvicorn main:app --reload --app-dir app"
