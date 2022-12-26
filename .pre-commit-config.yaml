@@ -1,13 +1,20 @@
 repos:
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.0.194'
-    hooks:
-      - id: ruff
-        # Respect `exclude` and `extend-exclude` settings.
-        args: ["--force-exclude"]
+  #- repo: https://github.com/charliermarsh/ruff-pre-commit
+  #  rev: 'v0.0.194'
+  #  hooks:
+  #    - id: ruff
+  #      # Respect `exclude` and `extend-exclude` settings.
+  #      args: ["--force-exclude"]
 
-  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: '2.6.2'
+  #- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  #  rev: '2.6.2'
+  #  hooks:
+  #    - id: editorconfig-checker
+  #      alias: ec
+-   repo: local
     hooks:
-      - id: editorconfig-checker
-        alias: ec
+    -   id: check-x
+        name: Check X
+        entry: poetry run poe lint
+        language: system
+        types: [python]
