@@ -19,6 +19,7 @@ ruff = "^0.0.194"
 black = "^22.12.0"
 poethepoet = "^0.16.5"
 isort = "^5.11.4"
+editorconfig-checker = "^2.6.2"
 
 [build-system]
 requires = ["poetry-core"]

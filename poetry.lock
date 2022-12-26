@@ -107,6 +107,17 @@ files = [
 ]
 
 [[package]]
+name = "editorconfig-checker"
+version = "2.6.2"
+description = "Python wrapper around invoking editorconfig-checker (https://github.com/editorconfig-checker/editorconfig-checker)"
+category = "dev"
+optional = false
+python-versions = ">=2.7"
+files = [
+    {file = "editorconfig-checker-2.6.2.tar.gz", hash = "sha256:ad51c469b71adf731fa4ef1f571eaaa47b194fcf04d13c3f041e8641b529e052"},
+]
+
+[[package]]
 name = "fastapi"
 version = "0.88.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
@@ -830,4 +841,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "7df4962b8dc165af033b7e6f9100ba0692722905d4aa8d115be22fb51b0889f9"
+content-hash = "87e0d7ba3b498a170d0837594132ff745a73ec3b13673b4cef1a15d5b7f44178"
