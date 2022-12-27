@@ -1,23 +1,30 @@
+fail_fast: true
+default_language_version:
+  python: python3.11
+
 repos:
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: '2.6.2'
     hooks:
       - id: editorconfig-checker
         alias: ec
+        verbose: true
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: 'v0.0.194'
     hooks:
       - id: ruff
         args: ["--fix"]
+        verbose: true
 
   - repo: https://github.com/psf/black
     rev: "22.12.0"
     hooks:
       - id: black
-        language_version: python3.11
+        verbose: true
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: 'v0.991'
     hooks:
       - id: mypy
+        verbose: true
