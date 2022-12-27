@@ -10,6 +10,8 @@ packages = [{include = "python_lambda_playground"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 mypy = "^0.991"
+aws-lambda-powertools = "^2.5.0"
+aws-lambda-typing = "^2.16.3"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^2.21.0"
@@ -37,7 +39,7 @@ strict = true
   cmd = "black ."
 
   [tool.poe.tasks.lint-mypy]
-  cmd = "mypy app"
+  cmd = "mypy src"
 
   [tool.poe.tasks.lint]
   sequence  = [
@@ -46,6 +48,3 @@ strict = true
     "lint-black",
     "lint-mypy"
   ]
-
-  [tool.poe.tasks.start]
-  cmd = "uvicorn main:app --reload --app-dir app"
