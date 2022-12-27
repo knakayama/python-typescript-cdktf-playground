@@ -2,7 +2,13 @@
   "language": "typescript",
   "app": "npx ts-node src/main.ts",
   "sendCrashReports": "false",
-  "terraformProviders": [],
+  "terraformProviders": [
+    {
+      "name": "aws",
+      "source": "hashicorp/aws",
+      "version": "~> 4.48.0"
+    }
+  ],
   "terraformModules": [
     {
       "name": "lambda",
@@ -13,5 +19,6 @@
   "context": {
     "excludeStackIdFromLogicalIds": "true",
     "allowSepCharsInLogicalIds": "true"
-  }
+  },
+  "projectId": "0cd64186-1810-4a0f-aaaf-01318a28c5d4"
 }

@@ -8,6 +8,6 @@ cdktf.out/
 !.yarn/sdks
 !.yarn/versions
 *tfstate*
-dist/
-src/.gen/*
-!src/.gen/versions.json
+src/lib/*
+!src/lib/versions.json
+!src/lib/constraints.json
