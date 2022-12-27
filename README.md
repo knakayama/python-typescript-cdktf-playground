@@ -1,2 +1,2 @@
-fast-api-playground
-===================
+python-lambda-playground
+========================
