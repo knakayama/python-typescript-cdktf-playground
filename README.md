@@ -1,2 +1,1 @@
-python-lambda-playground
-========================
+# python-lambda-playground
