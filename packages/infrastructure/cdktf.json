@@ -3,6 +3,13 @@
   "app": "npx ts-node src/main.ts",
   "sendCrashReports": "false",
   "terraformProviders": [],
+  "terraformModules": [
+    {
+      "name": "lambda",
+      "source": "terraform-aws-modules/lambda/aws",
+      "version": "~> 4.7.1"
+    }
+  ],
   "context": {
     "excludeStackIdFromLogicalIds": "true",
     "allowSepCharsInLogicalIds": "true"
