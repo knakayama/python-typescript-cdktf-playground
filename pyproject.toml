@@ -5,7 +5,6 @@ description = ""
 authors = ["knakayama <knakayama.sh@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "python_lambda_playground"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
