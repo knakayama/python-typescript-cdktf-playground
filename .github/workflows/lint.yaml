@@ -1,0 +1,32 @@
+name: lint
+
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - main
+  pull_request:
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    env:
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.12.1'
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn lint
+      - run: yarn build
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

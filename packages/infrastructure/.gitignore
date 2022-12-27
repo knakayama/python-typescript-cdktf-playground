@@ -1,0 +1,13 @@
+/node_modules/
+.pnp.*
+cdktf.out/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+*tfstate*
+dist/
+src/.gen/*
+!src/.gen/versions.json
