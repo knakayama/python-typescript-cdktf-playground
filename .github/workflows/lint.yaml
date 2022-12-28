@@ -25,7 +25,7 @@ jobs:
           node-version: '18.12.1'
           cache: yarn
       - run: yarn install --immutable
-      - run: yarn lint
+      - run: yarn lint lint:app
       - run: yarn build
       - uses: gitleaks/gitleaks-action@v2
         env:
