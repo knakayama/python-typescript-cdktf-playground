@@ -11,11 +11,16 @@ python = "^3.9"
 mypy = "^0.991"
 aws-lambda-powertools = "^2.5.0"
 aws-lambda-typing = "^2.16.3"
+requests = "^2.28.1"
+boto3 = "^1.26.38"
+types-requests = "^2.28.11.7"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^2.21.0"
 ruff = "^0.0.196"
 black = "^22.12.0"
+boto3-stubs = {extras = ["essential", "secretsmanager"], version = "^1.26.38"}
+poethepoet = "^0.17.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -27,3 +32,28 @@ strict = true
 [tool.ruff]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.poe.tasks]
+
+  [tool.poe.tasks.lint-ruff]
+  cmd  = "ruff ."
+
+  [tool.poe.tasks.lint-black]
+  cmd = "black ."
+
+  [tool.poe.tasks.lint-mypy]
+  cmd = "mypy app"
+
+  [tool.poe.tasks.lint]
+  sequence  = [
+    "lint-ruff",
+    "lint-black",
+    "lint-mypy"
+  ]
+
+[tool.black]
+extend-exclude = '''
+(
+  vendor
+)
+'''

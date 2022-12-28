@@ -1,4 +1,6 @@
 {
   "python.defaultInterpreterPath": "${workspaceFolder}/app/.venv/bin/python",
   "python.linting.mypyPath": "${workspaceFolder}/app/.venv/bin/mypy",
+  "python.linting.mypyEnabled": true,
+  "python.linting.enabled": true
 }

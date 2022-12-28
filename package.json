@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "description": "Infrastructure",
   "scripts": {
-    "lint:ruff": "(cd app && poetry run ruff .)",
-    "lint:black": "(cd app && poetry run black app --verbose)",
-    "lint:mypy": "(cd app && poetry run mypy app)",
+    "lint:ruff": "(cd app && poetry run poe lint-ruff)",
+    "lint:black": "(cd app && poetry run poe lint-black)",
+    "lint:mypy": "(cd app && poetry run poe lint-mypy)",
     "lint:app": "yarn lint:ruff && yarn lint:black && yarn lint:mypy",
     "lint:ec": "ec",
     "lint:eslint": "eslint --ext .ts src",

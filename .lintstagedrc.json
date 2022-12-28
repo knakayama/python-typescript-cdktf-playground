@@ -2,8 +2,8 @@
   "*": ["prettier --write --ignore-unknown", "ec", "gitleaks detect -v"],
   "src/**/*.ts": "eslint --fix",
   "app/**/*.py": [
-    "poetry run -C app ruff --fix --verbose",
-    "poetry run -C app black --verbose",
+    "poetry run -C app ruff --fix",
+    "poetry run -C app black",
     "poetry run -C app mypy"
   ]
 }
