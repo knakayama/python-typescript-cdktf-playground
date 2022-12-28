@@ -1,4 +1,0 @@
-{
-  "*": ["prettier --write --ignore-unknown", "ec", "gitleaks detect -v"],
-  "src/**/*.ts": "eslint --fix"
-}
