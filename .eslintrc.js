@@ -20,7 +20,7 @@ module.exports = {
     ecmaVersion: 9,
   },
   plugins: ['@typescript-eslint', 'jest', 'unicorn'],
-  ignorePatterns: ['**/cdk.out/**'],
+  ignorePatterns: ['**/lib/**'],
   rules: {
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',

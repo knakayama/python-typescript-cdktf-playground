@@ -1,4 +1,4 @@
 cdktf.out/
 app/*
-!app/*.toml
 !app/*.md
+src/lib
