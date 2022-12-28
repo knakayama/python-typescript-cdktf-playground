@@ -1,7 +1,2 @@
-/tmp/
-/.venv/
-__pycache__/
-/.mypy_cache/
-/.ruff_cache/
 /requirements.txt
 /vendor/

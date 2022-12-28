@@ -1,0 +1,5 @@
+.venv/
+.mypy_cache/
+tmp/
+.ruff_cache/
+__pycache__/

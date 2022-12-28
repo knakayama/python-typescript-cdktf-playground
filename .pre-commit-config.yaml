@@ -2,28 +2,45 @@ default_language_version:
   python: python3.9
 
 repos:
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.15.2
+    hooks:
+      - id: gitleaks-docker
+        entry: zricethezav/gitleaks protect --verbose --redact --staged
+        language: docker_image
+
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: '2.6.2'
+    rev: "2.6.2"
     hooks:
       - id: editorconfig-checker
         alias: ec
         verbose: true
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.0.194'
+    rev: "v0.0.194"
     hooks:
       - id: ruff
         args: ["--fix"]
         verbose: true
+        files: "^app/"
 
   - repo: https://github.com/psf/black
     rev: "22.12.0"
     hooks:
       - id: black
         verbose: true
+        files: "^app/"
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v0.991'
+    rev: "v0.991"
     hooks:
       - id: mypy
         verbose: true
+        files: "^app/"
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.7.1"
+    hooks:
+      - id: prettier
+        verbose: true
+        files: '^infrastructure/'

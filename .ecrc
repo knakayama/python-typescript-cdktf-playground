@@ -4,6 +4,9 @@
     ".mypy_cache",
     ".ruff_cache",
     "__pycache__",
-    ".git"
+    ".git",
+    "node_modules",
+    "cdktf.out",
+    ".yarn"
   ]
 }
