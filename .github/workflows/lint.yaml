@@ -20,13 +20,19 @@ jobs:
       CI: 'true'
     steps:
       - uses: actions/checkout@v3
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: '18.12.1'
           cache: yarn
       - run: yarn install --immutable
-      - run: yarn lint lint:app
-      - run: yarn build
-      - uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: yarn lint
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.16'
+          cache: poetry
+      - run: yarn build:app
+      - run: yarn build:layer
+      - run: yarn lint:app

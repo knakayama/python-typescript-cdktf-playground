@@ -1,0 +1,12 @@
+{
+  "exclude": [
+    "node_modules",
+    ".git",
+    "cdktf.out",
+    ".yarn",
+    ".venv",
+    ".mypy_cache",
+    ".ruff_cache",
+    "__pycache__"
+  ]
+}
