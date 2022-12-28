@@ -2513,18 +2513,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"editorconfig-checker@npm:4.0.0":
-  version: 4.0.0
-  resolution: "editorconfig-checker@npm:4.0.0"
+"editorconfig-checker@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "editorconfig-checker@npm:4.0.2"
   dependencies:
     https-proxy-agent: ^5.0.0
     node-fetch: ^2.6.0
-    rimraf: ^3.0.2
     tar: ^6.0.0
   bin:
     ec: ./dist/index.js
     editorconfig-checker: ./dist/index.js
-  checksum: 090141df674b3c037129952aca4a7263c5118b2ef7a63e962fefbb905b902d928e79f58b53478ed0a0c4cce2809ce13ac7fdaa23dbe8f0f6d5213c1f90d22df1
+  checksum: fd34b0fbebbe6e7d27f89ddb72b2ffccb8d3e7348130f25ae578f9a0bb7873c162b46fb6595ae5507b175fe1794ea87af15bb4f0db9cbb6592fb49f9e6228cd5
   languageName: node
   linkType: hard
 
@@ -3544,7 +3543,7 @@ __metadata:
     cdktf: ^0.14.1
     cdktf-cli: ^0.14.1
     constructs: ^10.1.65
-    editorconfig-checker: 4.0.0
+    editorconfig-checker: ^4.0.2
     eslint: ^8.30.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-jest: ^27.1.7
