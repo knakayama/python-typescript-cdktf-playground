@@ -13,5 +13,5 @@ cdktf.out/
 src/*
 !src/lib/constraints.json
 !src/lib/versions.json
-app/*/requirements.txt
-app/*/vendor/
+requirements.txt
+vendor/

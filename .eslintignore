@@ -1,7 +1,7 @@
 cdktf.out/
-app/*
-!app/*.md
+app/
 src/lib
 .mypy_cache
 .yarn/
 tmp/
+yarn.lock

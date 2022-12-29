@@ -1,4 +1,4 @@
-#!/usr/bin/env zx
+#!/usr/bin/env yarn run ts-node-esm --swc
 
 import { $ } from 'zx'
 import 'zx/globals'

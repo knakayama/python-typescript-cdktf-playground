@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-lambda-playground"
+name = "simple-crud-function"
 version = "0.1.0"
 description = ""
 authors = ["knakayama <knakayama.sh@gmail.com>"]
@@ -36,13 +36,13 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 [tool.poe.tasks]
 
   [tool.poe.tasks.lint-ruff]
-  cmd  = "ruff ."
+  cmd  = "ruff simple-crud-function"
 
   [tool.poe.tasks.lint-black]
-  cmd = "black ."
+  cmd = "black simple-crud-function"
 
   [tool.poe.tasks.lint-mypy]
-  cmd = "mypy app"
+  cmd = "mypy simple-crud-function"
 
   [tool.poe.tasks.lint]
   sequence  = [
@@ -50,10 +50,3 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
     "lint-black",
     "lint-mypy"
   ]
-
-[tool.black]
-extend-exclude = '''
-(
-  vendor
-)
-'''
