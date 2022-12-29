@@ -1,16 +1,13 @@
 {
-  "name": "infrastructure",
+  "name": "python-aws-playground",
   "packageManager": "yarn@3.3.1",
   "version": "0.0.1",
-  "description": "Infrastructure",
+  "description": "Python AWS Playground",
   "scripts": {
-    "lint:ruff": "(cd app && poetry run poe lint-ruff)",
-    "lint:black": "(cd app && poetry run poe lint-black)",
-    "lint:mypy": "(cd app && poetry run poe lint-mypy)",
-    "lint:app": "yarn lint:ruff && yarn lint:black && yarn lint:mypy",
+    "lint:app": "ts-node-esm --swc ./scripts/lintApp.mts",
     "lint:ec": "ec",
-    "lint:eslint": "eslint --ext .ts src",
-    "lint:prettier": "prettier --check '{src,app}/**/*.{ts,yaml,md,json}' '*.{md,yaml,json,js,ts}'",
+    "lint:eslint": "eslint --ext .ts --ext .mts src scripts",
+    "lint:prettier": "prettier --check '{src,app,scripts}/**/*.{ts,yaml,md,json,mts}' '*.{md,yaml,json,js,ts}'",
     "lint": "yarn lint:ec && yarn lint:prettier && yarn lint:eslint",
     "gitleaks": "gitleaks detect -v",
     "test": "jest",
@@ -19,7 +16,7 @@
     "cdktf:diff": "cdktf diff api",
     "cdktf:deploy": "(cd cdktf.out/stacks/api && terraform apply plan)",
     "build:app": "(cd app && poetry install)",
-    "build:layer": "zx ./scripts/build_layer.mjs",
+    "build:layer": "ts-node-esm --swc ./scripts/buildLayer.mts",
     "postinstall": "husky install"
   },
   "engines": {
@@ -28,7 +25,10 @@
   },
   "private": true,
   "repository": "https://github.com/knakayama/python-lambda-playground.git",
+  "type": "module",
   "devDependencies": {
+    "@swc/core": "^1.3.24",
+    "@tsconfig/node18-strictest-esm": "^1.0.1",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.3",
     "@typescript-eslint/eslint-plugin": "^5.47.1",

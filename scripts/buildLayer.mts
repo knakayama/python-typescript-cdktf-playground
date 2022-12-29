@@ -2,16 +2,8 @@
 
 import { $ } from 'zx'
 import 'zx/globals'
-import { fileURLToPath } from 'url'
-;(
-  await glob(
-    path.join(path.dirname(fileURLToPath(import.meta.url)), '../app'),
-    {
-      onlyDirectories: true,
-      deep: 1,
-    }
-  )
-).forEach(async (appDir) => {
+import { appDirs } from './utils.js'
+;(await appDirs()).forEach(async (appDir) => {
   echo(chalk.blue(`cd to ${appDir}`))
   cd(appDir)
   await $`poetry export --with main --without-hashes --format requirements.txt > requirements.txt`
