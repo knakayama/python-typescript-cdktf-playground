@@ -16,14 +16,14 @@ export default async (files) => [
     'yarn gitleaks',
     'eslint --fix',
   ].map((cmd) => `${cmd} ${files.join(' ')}`),
-  ...(await appDirs()).flatMap((appDir) =>
-    [
+  ...(await appDirs()).flatMap((appDir) => {
+    const pyFiles = micromatch(files, ['**/app/**/*.py'])
+    if (pyFiles.length === 0) return []
+
+    return [
       `poetry run -C ${appDir} ruff --fix`,
       `poetry run -C ${appDir} black`,
       `poetry run -C ${appDir} mypy`,
-    ].map(
-      (cmd) =>
-        `${cmd} ${micromatch(files, path.join(appDir, '**/*.py')).join(' ')}`
-    )
-  ),
+    ].map((cmd) => `${cmd} ${pyFiles.join(' ')}`)
+  }),
 ]

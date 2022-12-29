@@ -14,7 +14,7 @@
     "cdktf:get": "cdktf get -o src/lib",
     "cdktf:diff": "cdktf diff api",
     "cdktf:deploy": "(cd cdktf.out/stacks/api && terraform apply plan)",
-    "build:app": "(cd app && poetry install)",
+    "build:app": "./scripts/buildApp.mts",
     "build:layer": "./scripts/buildLayer.mts",
     "postinstall": "husky install"
   },
