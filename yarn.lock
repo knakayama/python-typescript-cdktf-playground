@@ -501,6 +501,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toml-tools/lexer@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@toml-tools/lexer@npm:0.3.1"
+  dependencies:
+    chevrotain: 4.1.1
+  checksum: 3fef79ce28cacb4196c088946c25ceff4527660a7cd75000a06526481b9255d42e5592f6d9120143a34f2bfba16b902c042258aa439c23fb62985f0c8f2a5f70
+  languageName: node
+  linkType: hard
+
+"@toml-tools/parser@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@toml-tools/parser@npm:0.3.1"
+  dependencies:
+    "@toml-tools/lexer": ^0.3.1
+    chevrotain: 4.1.1
+  checksum: c94918cf9f5205d5f0c6b05370e1c236ac8dc2eb4606e6448e542d85a54be73df509e94132ad6c09c02c4a04b58f4e390446854c13260f5189551dde130af8f8
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.9
   resolution: "@tsconfig/node10@npm:1.0.9"
@@ -1139,6 +1158,15 @@ __metadata:
   version: 5.2.0
   resolution: "chalk@npm:5.2.0"
   checksum: 03d8060277de6cf2fd567dc25fcf770593eb5bb85f460ce443e49255a30ff1242edd0c90a06a03803b0466ff0687a939b41db1757bec987113e83de89a003caa
+  languageName: node
+  linkType: hard
+
+"chevrotain@npm:4.1.1":
+  version: 4.1.1
+  resolution: "chevrotain@npm:4.1.1"
+  dependencies:
+    regexp-to-ast: 0.3.5
+  checksum: 209229115f4e6610238008282afe13b67f57edfd9bc2514371e4e1349c32bd6cf2792088e125e1c19c2d8343611ef89f54747ac97b4f641dba5f2a74f5235a45
   languageName: node
   linkType: hard
 
@@ -3302,6 +3330,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-plugin-toml@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "prettier-plugin-toml@npm:0.3.1"
+  dependencies:
+    "@toml-tools/parser": ^0.3.1
+    prettier: ^1.16.0
+  checksum: 9c34cc4a3566f1e23186861a1c141c1a320552dd836fbf3e3742c7d123006ac302fbc1aabb3606f6ee1dfc393c840df1c7d47efb597f6aefebba354a8cdccaca
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^1.16.0":
+  version: 1.19.1
+  resolution: "prettier@npm:1.19.1"
+  bin:
+    prettier: ./bin-prettier.js
+  checksum: bc78219e0f8173a808f4c6c8e0a137dd8ebd4fbe013e63fe1a37a82b48612f17b8ae8e18a992adf802ee2cf7428f14f084e7c2846ca5759cf4013c6e54810e1f
+  languageName: node
+  linkType: hard
+
 "prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
@@ -3361,6 +3408,7 @@ __metadata:
     micromatch: ^4.0.5
     param-case: ^3.0.4
     prettier: ^2.7.1
+    prettier-plugin-toml: ^0.3.1
     snake-case: ^3.0.4
     ts-node: ^10.9.1
     tsconfig-paths: ^4.0.0
@@ -3432,6 +3480,13 @@ __metadata:
   dependencies:
     minimatch: ^5.1.0
   checksum: 1e5f701d3c94af5653e1736dfef99e991869c6e1c87bf08835d8c641f767e73ae25b829d3d1f8504fab8cad49b70b718ef960d3afee5be45cd779ccaeb264ed4
+  languageName: node
+  linkType: hard
+
+"regexp-to-ast@npm:0.3.5":
+  version: 0.3.5
+  resolution: "regexp-to-ast@npm:0.3.5"
+  checksum: 8b738a6da564ea0816c61bfd26243e4313346a09d7a1d63ec505002e99a82cce12dde50e7b7a98f179cd0782ee652e99a7b2a9e83b53cf9497b8a5fbb4bf652e
   languageName: node
   linkType: hard
 

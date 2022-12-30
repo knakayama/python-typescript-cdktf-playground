@@ -1,7 +1,11 @@
 cdktf.out/
-app/*
-!app/*.md
+app/**/*.py
 src/lib
 .mypy_cache
 .yarn/
+.pytest_cache
+.ruff_cache
+.venv
+*.lock
+vendor/
 tmp/

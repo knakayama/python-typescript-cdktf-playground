@@ -6,8 +6,8 @@
   "scripts": {
     "lint:app": "./scripts/lintApp.mts",
     "lint:ec": "ec",
-    "lint:eslint": "eslint --ext .ts --ext .mts --ext .mjs --ext .js --ext .cjs .",
-    "lint:prettier": "prettier --check '**/*.{ts,yaml,md,json,mts,js,cjs,mjs}'",
+    "lint:eslint": "eslint --ext .ts,.mts,.mjs,.js,.cjs .",
+    "lint:prettier": "prettier --check '**/*.{ts,yaml,md,json,mts,js,cjs,mjs,toml}'",
     "lint": "yarn lint:ec && yarn lint:prettier && yarn lint:eslint",
     "gitleaks": "gitleaks detect -v",
     "cdktf": "cdktf",
@@ -43,6 +43,7 @@
     "lint-staged": "^13.0.3",
     "micromatch": "^4.0.5",
     "prettier": "^2.7.1",
+    "prettier-plugin-toml": "^0.3.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.0.0",
     "type-fest": "^3.5.0",
