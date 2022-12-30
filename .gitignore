@@ -3,11 +3,11 @@
 .pnp.*
 cdktf.out/
 .yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+!.yarn/patches/
+!.yarn/plugins/
+!.yarn/releases/
+!.yarn/sdks/
+!.yarn/versions/
 *tfstate*
 .envrc
 src/*
@@ -15,3 +15,4 @@ src/*
 !src/lib/versions.json
 requirements.txt
 vendor/
+__pycache__/
