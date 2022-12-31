@@ -21,6 +21,7 @@ class User(BaseModel):
     address: UserAddress
     zip_code: UserZipCode
     country: CountryCode
+    # TODO: The field below shouldn't be Optional
     name: Optional[UserName]
     id: UUID4 = Field(default_factory=uuid4)
     email: EmailStr
