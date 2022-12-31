@@ -15,10 +15,10 @@ class UserDescProtocol(Protocol):
 
 
 class UserUpdateProtocol(Protocol):
-    def update(self) -> User:
+    def update(self, id: UUID) -> User:
         ...
 
 
 class UserDeletionProtocol(Protocol):
-    def delete(self) -> None:
+    def delete(self, id: UUID) -> None:
         ...
