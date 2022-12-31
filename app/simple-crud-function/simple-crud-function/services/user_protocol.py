@@ -15,7 +15,7 @@ class UserDescProtocol(Protocol):
 
 
 class UserUpdateProtocol(Protocol):
-    def update(self, id: UUID) -> User:
+    def update(self, user: User) -> User:
         ...
 
 

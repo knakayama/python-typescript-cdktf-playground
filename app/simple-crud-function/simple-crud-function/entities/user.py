@@ -3,7 +3,7 @@ from uuid import uuid4
 
 from modules.type_hints import CountryCode
 from modules.user import to_name
-from pydantic import UUID4, BaseModel, EmailStr, Field
+from pydantic import UUID4, BaseModel, EmailStr, validator, Field
 from validators.user import (
     UserAddress,
     UserAge,
@@ -21,7 +21,6 @@ class User(BaseModel):
     address: UserAddress
     zip_code: UserZipCode
     country: CountryCode
-    # TODO: The filed below should not be None
     name: Optional[UserName]
     id: UUID4 = Field(default_factory=uuid4)
     email: EmailStr
@@ -32,3 +31,10 @@ class User(BaseModel):
             UserName,
             to_name(self.first_name, self.middle_name, self.last_name),
         )
+
+    @validator("id")
+    def set_id(cls, id: UUID4) -> UUID4:
+        return id or uuid4()
+
+    class Config:
+        validate_assignment = True

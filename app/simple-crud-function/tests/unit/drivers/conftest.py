@@ -4,6 +4,7 @@ import pytest
 from drivers.user_creation import UserCreationDriver
 from drivers.user_deletion import UserDeletionDriver
 from drivers.user_desc import UserDescDriver
+from drivers.user_update import UserUpdateDriver
 from modules.constants import endpoint_url, table_name
 
 from ..fixtures.table import TableFixture
@@ -31,3 +32,8 @@ def user_desc_driver() -> UserDescDriver:
 @pytest.fixture(scope="session")
 def user_deletion_driver() -> UserDeletionDriver:
     return UserDeletionDriver(table_name=table_name, endpoint_url=endpoint_url)
+
+
+@pytest.fixture(scope="session")
+def user_update_driver() -> UserUpdateDriver:
+    return UserUpdateDriver(table_name=table_name, endpoint_url=endpoint_url)
