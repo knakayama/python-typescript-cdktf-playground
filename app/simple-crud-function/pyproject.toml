@@ -12,15 +12,22 @@ mypy = "^0.991"
 aws-lambda-powertools = "^2.5.0"
 aws-lambda-typing = "^2.16.3"
 requests = "^2.28.1"
-boto3 = "^1.26.38"
+boto3 = "~1.24.0"
 types-requests = "^2.28.11.7"
+boto3-stubs = { extras = ["essential"], version = "~1.24.0" }
+pydash = "^5.1.2"
+pydantic = {extras = ["email"], version = "^1.10.4"}
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "^2.21.0"
 ruff = "^0.0.196"
 black = "^22.12.0"
-boto3-stubs = {extras = ["essential", "secretsmanager"], version = "^1.26.38"}
 poethepoet = "^0.17.1"
+pytest = "^7.2.0"
+faker = "^15.3.4"
+localstack = "^1.3.1"
+ipython = "^8.7.0"
+isort = "^5.11.4"
+hypothesis = "^6.61.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -29,24 +36,53 @@ build-backend = "poetry.core.masonry.api"
 [tool.mypy]
 strict = true
 
+[[tool.mypy.overrides]]
+module = "pydash.*"
+ignore_missing_imports = true
+
 [tool.ruff]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+preview = true
+extend-exclude = '''
+(
+  vendor
+)
+'''
+
 [tool.poe.tasks]
 
-  [tool.poe.tasks.lint-ruff]
-  cmd  = "ruff simple-crud-function"
+[tool.poe.tasks.lint-isort]
+cmd = "isort simple-crud-function tests"
 
-  [tool.poe.tasks.lint-black]
-  cmd = "black simple-crud-function"
+[tool.poe.tasks.lint-ruff]
+cmd = "ruff simple-crud-function tests"
 
-  [tool.poe.tasks.lint-mypy]
-  cmd = "mypy simple-crud-function"
+[tool.poe.tasks.lint-black]
+cmd = "black simple-crud-function tests"
 
-  [tool.poe.tasks.lint]
-  sequence  = [
-    "lint-ruff",
-    "lint-black",
-    "lint-mypy"
-  ]
+[tool.poe.tasks.lint-mypy]
+cmd = "mypy simple-crud-function tests"
+
+[tool.poe.tasks.lint]
+sequence = ["lint-isort", "lint-black", "lint-ruff", "lint-mypy"]
+
+[tool.poe.tasks.test]
+cmd = "pytest tests"
+env = { PYTHONPATH = "simple-crud-function:tests" }
+
+[tool.poe.tasks.aws-start]
+sequence = [
+  { cmd = "localstack start -d" },
+  { cmd = "localstack wait"}
+]
+
+[tool.poe.tasks.aws-stop]
+cmd = "localstack stop"

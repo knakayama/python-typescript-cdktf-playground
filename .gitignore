@@ -16,3 +16,4 @@ src/*
 requirements.txt
 vendor/
 __pycache__/
+.hypothesis/

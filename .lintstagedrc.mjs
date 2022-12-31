@@ -23,7 +23,7 @@ export default async (files) => [
     return [
       `poetry run -C ${appDir} ruff --fix`,
       `poetry run -C ${appDir} black`,
-      `poetry run -C ${appDir} mypy`,
+      `poetry run -C ${appDir} mypy --config-file "${appDir}/pyproject.toml" `,
     ].map((cmd) => `${cmd} ${pyFiles.join(' ')}`)
   }),
 ]
