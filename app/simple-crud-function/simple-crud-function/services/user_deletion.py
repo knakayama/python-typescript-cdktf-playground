@@ -1,5 +1,5 @@
 from uuid import UUID
-from drivers.user_protocol import UserDeletionDriverProtocol
+from drivers.user_protocols import UserDeletionDriverProtocol
 
 
 class UserDeletionService:

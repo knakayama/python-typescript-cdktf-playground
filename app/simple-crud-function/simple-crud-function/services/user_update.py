@@ -1,4 +1,4 @@
-from drivers.user_protocol import UserUpdateDriverProtocol
+from drivers.user_protocols import UserUpdateDriverProtocol
 from entities.user import User
 
 
