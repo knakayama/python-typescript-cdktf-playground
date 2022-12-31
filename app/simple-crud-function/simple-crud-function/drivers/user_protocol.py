@@ -4,21 +4,21 @@ from uuid import UUID
 from entities.user import User
 
 
-class UserCreationServiceProtocol(Protocol):
+class UserCreationDriverProtocol(Protocol):
     def create(self, user: User) -> User:
         ...
 
 
-class UserDescServiceProtocol(Protocol):
+class UserDescDriverProtocol(Protocol):
     def describe(self, id: UUID) -> Optional[User]:
         ...
 
 
-class UserUpdateServiceProtocol(Protocol):
+class UserUpdateDriverProtocol(Protocol):
     def update(self, user: User) -> User:
         ...
 
 
-class UserDeletionServiceProtocol(Protocol):
+class UserDeletionDriverProtocol(Protocol):
     def delete(self, id: UUID) -> None:
         ...
