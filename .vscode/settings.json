@@ -13,6 +13,7 @@
     "${workspaceFolder}/app/simple-crud-function/simple-crud-function"
   ],
   "python.analysis.extraPaths": [
-    "${workspaceFolder}/app/simple-crud-function/simple-crud-function"
+    "${workspaceFolder}/app/simple-crud-function/simple-crud-function",
+    "./app/simple-crud-function/simple-crud-function"
   ],
 }
