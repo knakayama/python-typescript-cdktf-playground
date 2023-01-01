@@ -1,5 +1,6 @@
 from typing import Optional
 from uuid import UUID
+
 from drivers.user_protocols import UserDescDriverProtocol
 from entities.user import User
 

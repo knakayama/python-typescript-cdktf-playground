@@ -1,4 +1,5 @@
 from uuid import UUID
+
 from services.user_protocols import UserDeletionServiceProtocol
 
 

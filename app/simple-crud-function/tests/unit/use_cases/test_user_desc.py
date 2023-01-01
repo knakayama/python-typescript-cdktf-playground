@@ -1,11 +1,10 @@
 from uuid import UUID
 
 import pytest
-from pytest import MonkeyPatch
+from exceptions.user import UserNotFound
 from hypothesis import given
 from hypothesis.strategies import uuids
-
-from exceptions.user import UserNotFound
+from pytest import MonkeyPatch
 from use_cases.user_desc import UserDescUseCase
 
 from ..fixtures import utils

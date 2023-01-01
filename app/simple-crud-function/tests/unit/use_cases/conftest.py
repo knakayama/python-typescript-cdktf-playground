@@ -1,8 +1,9 @@
 from typing import Optional
 from uuid import UUID
+
 import pytest
-from use_cases.user_desc import UserDescUseCase
 from entities.user import User
+from use_cases.user_desc import UserDescUseCase
 
 
 class MockUserDescService:

@@ -1,7 +1,8 @@
 from uuid import UUID
+
 from entities.user import User
-from services.user_protocols import UserDescServiceProtocol
 from exceptions.user import UserNotFound
+from services.user_protocols import UserDescServiceProtocol
 
 
 class UserDescUseCase:

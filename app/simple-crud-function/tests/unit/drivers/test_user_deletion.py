@@ -1,11 +1,11 @@
 from uuid import UUID
-from hypothesis import given
-from hypothesis.strategies import uuids
 
 import pytest
 from drivers.user_creation import UserCreationDriver
 from drivers.user_deletion import UserDeletionDriver
 from drivers.user_desc import UserDescDriver
+from hypothesis import given
+from hypothesis.strategies import uuids
 
 from ..fixtures import utils
 

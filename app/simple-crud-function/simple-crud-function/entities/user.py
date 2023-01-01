@@ -3,7 +3,7 @@ from uuid import uuid4
 
 from modules.type_hints import CountryCode
 from modules.user import to_name
-from pydantic import UUID4, BaseModel, EmailStr, validator, Field
+from pydantic import UUID4, BaseModel, EmailStr, Field, validator
 from validators.user import (
     UserAddress,
     UserAge,
