@@ -1,17 +1,12 @@
-from typing import TypeVar
+from typing import Generic
 
+from modules.type_hints import Input, Output
 from use_cases.protocols import UseCaseProtocol
 
-Input = TypeVar("Input", contravariant=True)
-Output = TypeVar("Output", covariant=True)
 
-
-class ApiController:
+class ApiController(Generic[Input, Output]):
     def __init__(self, use_case: UseCaseProtocol[Input, Output]) -> None:
         self.use_case = use_case
 
-    # TODO: fix
-    # A function returning TypeVar should receive at least one argument
-    # containing the same TypeVar  [type-var]
-    def handle(self, input: Input) -> Output:  # type: ignore
+    def handle(self, input: Input) -> Output:
         return self.use_case.execute(input)

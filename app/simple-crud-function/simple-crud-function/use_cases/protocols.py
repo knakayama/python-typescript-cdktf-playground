@@ -1,7 +1,6 @@
-from typing import Protocol, TypeVar
+from typing import Protocol
 
-Input = TypeVar("Input", contravariant=True)
-Output = TypeVar("Output", covariant=True)
+from modules.type_hints import Input, Output
 
 
 class UseCaseProtocol(Protocol[Input, Output]):
