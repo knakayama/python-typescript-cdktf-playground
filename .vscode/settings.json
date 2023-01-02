@@ -1,19 +1,19 @@
 {
-  "python.defaultInterpreterPath": "${workspaceFolder}/app/simple-crud-function/.venv/bin/python",
-  "python.linting.mypyPath": "${workspaceFolder}/app/simple-crud-function/.venv/bin/mypy",
+  "python.defaultInterpreterPath": "${workspaceFolder}/app/simple_crud_function/.venv/bin/python",
+  "python.linting.mypyPath": "${workspaceFolder}/app/simple_crud_function/.venv/bin/mypy",
   "python.linting.mypyEnabled": true,
   "python.linting.enabled": true,
   "python.testing.pytestArgs": [
-    "app/simple-crud-function"
+    "app/simple_crud_function"
 
   ],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "python.autoComplete.extraPaths": [
-    "${workspaceFolder}/app/simple-crud-function/simple-crud-function"
+    "${workspaceFolder}/app/simple_crud_function/simple_crud_function"
   ],
   "python.analysis.extraPaths": [
-    "${workspaceFolder}/app/simple-crud-function/simple-crud-function",
-    "./app/simple-crud-function/simple-crud-function"
+    "${workspaceFolder}/app/simple_crud_function/simple_crud_function",
+    "./app/simple_crud_function/simple_crud_function"
   ],
 }

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "simple-crud-function"
+name = "simple_crud_function"
 version = "0.1.0"
 description = ""
 authors = ["knakayama <knakayama.sh@gmail.com>"]
@@ -60,23 +60,23 @@ extend-exclude = '''
 [tool.poe.tasks]
 
 [tool.poe.tasks.lint-isort]
-cmd = "isort simple-crud-function tests"
+cmd = "isort simple_crud_function tests"
 
 [tool.poe.tasks.lint-ruff]
-cmd = "ruff simple-crud-function tests"
+cmd = "ruff simple_crud_function tests"
 
 [tool.poe.tasks.lint-black]
-cmd = "black simple-crud-function tests"
+cmd = "black simple_crud_function tests"
 
 [tool.poe.tasks.lint-mypy]
-cmd = "mypy simple-crud-function tests"
+cmd = "mypy simple_crud_function tests"
 
 [tool.poe.tasks.lint]
 sequence = ["lint-isort", "lint-black", "lint-ruff", "lint-mypy"]
 
 [tool.poe.tasks.test]
 cmd = "pytest tests"
-env = { PYTHONPATH = "simple-crud-function:tests" }
+env = { PYTHONPATH = "simple_crud_function:tests" }
 
 [tool.poe.tasks.aws-start]
 sequence = [
