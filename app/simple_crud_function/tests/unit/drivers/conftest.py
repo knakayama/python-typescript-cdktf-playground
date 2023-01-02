@@ -26,13 +26,13 @@ def user_driver() -> UserDriver:
 
 
 @pytest.fixture(scope="session")
-def user_creation_driver() -> UserCreationDriver:
-    return UserCreationDriver(table_name=table_name, endpoint_url=endpoint_url)
+def user_creation_driver(user_driver: UserDriver) -> UserCreationDriver:
+    return UserCreationDriver(user_driver)
 
 
 @pytest.fixture(scope="session")
-def user_desc_driver() -> UserDescDriver:
-    return UserDescDriver(table_name=table_name, endpoint_url=endpoint_url)
+def user_desc_driver(user_driver: UserDriver) -> UserDescDriver:
+    return UserDescDriver(user_driver)
 
 
 @pytest.fixture(scope="session")
@@ -41,5 +41,5 @@ def user_deletion_driver(user_driver: UserDriver) -> UserDeletionDriver:
 
 
 @pytest.fixture(scope="session")
-def user_update_driver() -> UserUpdateDriver:
-    return UserUpdateDriver(table_name=table_name, endpoint_url=endpoint_url)
+def user_update_driver(user_driver: UserDriver) -> UserUpdateDriver:
+    return UserUpdateDriver(user_driver)

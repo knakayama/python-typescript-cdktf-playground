@@ -1,4 +1,4 @@
-from typing import Optional, Protocol
+from typing import Protocol
 
 from drivers.user import UserDriver
 from entities.user import User
@@ -11,8 +11,8 @@ class UserUpdateDriverProtocol(Protocol):
 
 
 class UserUpdateDriver:
-    def __init__(self, table_name: str, endpoint_url: Optional[str] = None) -> None:
-        self.driver = UserDriver(table_name=table_name, endpoint_url=endpoint_url)
+    def __init__(self, driver: UserDriver) -> None:
+        self.driver = driver
 
     def update(self, user: User) -> User:
         self.driver.table.put_item(
