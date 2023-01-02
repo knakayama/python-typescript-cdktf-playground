@@ -5,7 +5,7 @@ from exceptions.user import UserNotFound
 from hypothesis import given
 from hypothesis.strategies import uuids
 from pytest import MonkeyPatch
-from use_cases.user_desc import UserDescUseCase
+from use_cases.user_desc import UserDescUseCase, UserDescUseCaseInput
 
 from ..fixtures import utils
 
@@ -18,7 +18,7 @@ class TestUserDescUseCase:
         user_desc_use_case: UserDescUseCase,
     ) -> None:
         with pytest.raises(UserNotFound):
-            user_desc_use_case.execute(id)
+            user_desc_use_case.execute(UserDescUseCaseInput(id=id))
 
     def test_given_an_existing_user(
         self, user_desc_use_case: UserDescUseCase, monkeypatch: MonkeyPatch
@@ -28,4 +28,4 @@ class TestUserDescUseCase:
             user_desc_use_case.service, "describe", lambda *_args, **_kwargs: user
         )
 
-        assert user_desc_use_case.execute(user.id) == user
+        assert user_desc_use_case.execute(UserDescUseCaseInput(id=user.id)) == user
