@@ -15,5 +15,5 @@ class OKResponseBuilder(Generic[CovariantType]):
 
     def serialize(self) -> APIGatewayProxyResponseV2:
         return APIGatewayProxyResponseV2(
-            statusCode=self.status_code, body=json.dumps(self.response_body)
+            statusCode=self.status_code, body=json.dumps(self.response_body.__dict__)
         )

@@ -12,16 +12,28 @@ class ErrorResponseBody:
 
 
 class ErrorResponseBuilder:
-    def __init__(
-        self, error_response_body: ErrorResponseBody, http_status_code: int
-    ) -> None:
-        self.error_response_body = error_response_body
-        self.http_status_code = http_status_code
+    def __init__(self, response_body: ErrorResponseBody, status_code: int) -> None:
+        self.response_body = response_body
+        self.status_code = status_code
 
     def serialize(self) -> APIGatewayProxyResponseV2:
         return APIGatewayProxyResponseV2(
-            statusCode=self.http_status_code, body=json.dumps(self.error_response_body)
+            statusCode=self.status_code, body=json.dumps(self.response_body.__dict__)
         )
+
+
+class NotFoundResponseBuilder:
+    def __init__(self, error: Exception) -> None:
+        self.response_builder = ErrorResponseBuilder(
+            response_body=ErrorResponseBody(
+                code=error.__class__.__name__,
+                desc=f"{error}",
+            ),
+            status_code=HttpStatusCode.NotFound,
+        )
+
+    def serialize(self) -> APIGatewayProxyResponseV2:
+        return self.response_builder.serialize()
 
 
 class InternalServerErrorResponseBuilder:
@@ -29,10 +41,10 @@ class InternalServerErrorResponseBuilder:
         print(error)
 
         self.response_builder = ErrorResponseBuilder(
-            error_response_body=ErrorResponseBody(
-                code="Internal Server Error", desc="Something wrong occurred."
+            response_body=ErrorResponseBody(
+                code="InternalServerError", desc="Something wrong occurred."
             ),
-            http_status_code=HttpStatusCode.InternalServerError,
+            status_code=HttpStatusCode.InternalServerError,
         )
 
     def serialize(self) -> APIGatewayProxyResponseV2:
