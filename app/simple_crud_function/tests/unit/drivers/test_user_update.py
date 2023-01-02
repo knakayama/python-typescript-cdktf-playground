@@ -5,7 +5,7 @@ from drivers.user_creation import UserCreationDriver
 from drivers.user_desc import UserDescDriver
 from drivers.user_update import UserUpdateDriver
 
-from ..fixtures import utils
+from tests.unit.fixtures import utils
 
 
 class TestUserUpdateDriver:

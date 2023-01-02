@@ -11,5 +11,4 @@ class UserDeletionUseCase:
         self.service = service
 
     def execute(self, input: UserDeletionUseCaseInput) -> None:
-        # TODO: implement user not found
         self.service.delete(input.id)

@@ -6,7 +6,7 @@ from drivers.user_desc import UserDescDriver
 from hypothesis import given
 from hypothesis.strategies import uuids
 
-from ..fixtures import utils
+from tests.unit.fixtures import utils
 
 
 class TestUserDescDriver:

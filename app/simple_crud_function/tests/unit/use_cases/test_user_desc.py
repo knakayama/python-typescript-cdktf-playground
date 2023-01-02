@@ -7,7 +7,7 @@ from hypothesis.strategies import uuids
 from pytest import MonkeyPatch
 from use_cases.user_desc import UserDescUseCase, UserDescUseCaseInput
 
-from ..fixtures import utils
+from tests.unit.fixtures import utils
 
 
 class TestUserDescUseCase:

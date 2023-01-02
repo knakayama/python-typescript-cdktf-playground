@@ -4,7 +4,7 @@ import pytest
 from drivers.user_creation import UserCreationDriver
 from drivers.user_desc import UserDescDriver
 
-from ..fixtures import utils
+from tests.unit.fixtures import utils
 
 
 class TestUserCreationDriver:

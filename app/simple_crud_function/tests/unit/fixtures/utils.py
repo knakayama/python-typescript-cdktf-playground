@@ -1,6 +1,6 @@
 from random import choice
 from typing import Optional, cast
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from entities.user import User
 from faker import Faker
@@ -33,8 +33,8 @@ def age() -> int:
     return cast(int, fake.pyint(max_value=100))
 
 
-def user_id() -> str:
-    return uuid4().__str__()
+def user_id() -> UUID:
+    return uuid4()
 
 
 def email() -> str:
