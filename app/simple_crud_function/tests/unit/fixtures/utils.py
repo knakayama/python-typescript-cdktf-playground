@@ -1,11 +1,10 @@
 from random import choice
-from typing import Any, Optional, cast
+from typing import Optional, cast
 from uuid import UUID, uuid4
 
 from entities.user import User
 from faker import Faker
 from modules.type_hints import CountryCode
-from presenters.error_responses import ErrorResponseBody
 
 fake = Faker()
 
@@ -57,7 +56,3 @@ def user(middle_name: Optional[str] = None) -> User:
         age=age(),
         email=email(),
     )
-
-
-def to_error_response_body_obj(error: Exception) -> dict[str, Any]:
-    return ErrorResponseBody(code=error.__class__.__name__, desc=f"{error}").__dict__
