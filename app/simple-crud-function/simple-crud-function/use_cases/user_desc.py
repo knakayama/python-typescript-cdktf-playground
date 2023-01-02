@@ -2,7 +2,7 @@ from uuid import UUID
 
 from entities.user import User
 from exceptions.user import UserNotFound
-from services.user_protocols import UserDescServiceProtocol
+from services.user_desc import UserDescServiceProtocol
 
 
 class UserDescUseCase:

@@ -1,21 +1,28 @@
-from typing import Optional
-from uuid import UUID
+from typing import Optional, Protocol
 
 from drivers.user import UserDriver
 from entities.user import User
+from services.user_desc import UserDescServiceInput, UserDescServiceOutput
+from typing_extensions import TypeAlias
+
+UserDescDriverInput: TypeAlias = UserDescServiceInput
+UserDescDriverOutput: TypeAlias = UserDescServiceOutput
+
+
+class UserDescDriverProtocol(Protocol):
+    def describe(self, input: UserDescDriverInput) -> UserDescDriverOutput:
+        ...
 
 
 class UserDescDriver:
-    driver: UserDriver
-
     def __init__(self, table_name: str, endpoint_url: Optional[str] = None) -> None:
         self.driver = UserDriver(table_name=table_name, endpoint_url=endpoint_url)
 
-    def describe(self, id: UUID) -> Optional[User]:
+    def describe(self, input: UserDescDriverInput) -> UserDescDriverOutput:
         output = self.driver.table.get_item(
             Key={
-                "pk": f"user#{id}",
-                "sk": f"user#{id}",
+                "pk": f"user#{input}",
+                "sk": f"user#{input}",
             },
         )
 

@@ -1,5 +1,5 @@
 from entities.user import User
-from services.user_protocols import UserUpdateServiceProtocol
+from services.user_update import UserUpdateServiceProtocol
 
 
 class UserUpdateUseCase:

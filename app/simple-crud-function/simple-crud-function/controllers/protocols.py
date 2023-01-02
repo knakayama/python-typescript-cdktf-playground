@@ -1,8 +1,15 @@
+from dataclasses import dataclass
 from typing import Protocol
 
-from modules.type_hints import Input, Output
+from presenters.protocols import ResponseBuilderProtocol
 
 
-class ControllerProtocol(Protocol[Input, Output]):
-    def handle(self, input: Input) -> Output:
+@dataclass
+class ApiControllerInput:
+    path_parameters: dict[str, str]
+    body: str
+
+
+class ControllerProtocol(Protocol):
+    def handle(self, input: ApiControllerInput) -> ResponseBuilderProtocol:
         ...

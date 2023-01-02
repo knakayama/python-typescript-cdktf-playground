@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from services.user_protocols import UserDeletionServiceProtocol
+from services.user_deletion import UserDeletionServiceProtocol
 
 
 class UserDeletionUseCase:
