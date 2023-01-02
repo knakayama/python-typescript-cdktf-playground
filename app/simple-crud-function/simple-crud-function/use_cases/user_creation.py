@@ -3,7 +3,7 @@ from typing import Optional
 from entities.user import User
 from modules.type_hints import CountryCode
 from pydantic import BaseModel, EmailStr
-from services.user_creation import UserCreationService
+from services.user_creation import UserCreationServiceProtocol
 from typing_extensions import TypeAlias
 from validators.constraints.user import (
     UserAddress,
@@ -28,7 +28,7 @@ UserCreationUseCaseOutput: TypeAlias = User
 
 
 class UserCreationUseCase:
-    def __init__(self, service: UserCreationService) -> None:
+    def __init__(self, service: UserCreationServiceProtocol) -> None:
         self.service = service
 
     def execute(self, input: UserCreationUseCaseInput) -> UserCreationUseCaseOutput:

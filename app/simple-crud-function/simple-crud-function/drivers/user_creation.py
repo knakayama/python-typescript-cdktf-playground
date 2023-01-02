@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Protocol
 
 from drivers.user import UserDriver
 from entities.user import User
@@ -8,6 +8,11 @@ from typing_extensions import TypeAlias
 
 UserCreationDriverInput: TypeAlias = User
 UserCreationDriverOutput: TypeAlias = UserCreationServiceOutput
+
+
+class UserCreationDriverProtocol(Protocol):
+    def create(self, input: UserCreationDriverInput) -> UserCreationDriverOutput:
+        ...
 
 
 class UserCreationDriver:
