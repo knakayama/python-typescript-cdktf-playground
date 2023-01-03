@@ -4,9 +4,10 @@ import pytest
 from exceptions.user import UserNotFound
 from presenters.error_response import error_response_builder
 from presenters.http_status_code import HttpStatusCode
+from pydantic import BaseModel, ValidationError
 
 from tests.unit.fixtures import utils
-from tests.unit.presenters.utils import to_error_response_body_obj
+from tests.unit.presenters.utils import to_error_response_body_dict
 
 
 class TestErrorResponseBuilder:
@@ -15,7 +16,22 @@ class TestErrorResponseBuilder:
         output = error_response_builder(error).serialize()
 
         assert output["statusCode"] == HttpStatusCode.NotFound
-        assert json.loads(output["body"]) == to_error_response_body_obj(error)
+        assert json.loads(output["body"]) == to_error_response_body_dict(error)
+
+    @pytest.mark.parametrize(
+        "error",
+        [
+            ValidationError(
+                errors=[],
+                model=BaseModel,
+            )
+        ],
+    )
+    def test_given_bad_request_matchables(self, error: Exception) -> None:
+        output = error_response_builder(error).serialize()
+
+        assert output["statusCode"] == HttpStatusCode.BadRequest
+        assert json.loads(output["body"]) == to_error_response_body_dict(error)
 
     @pytest.mark.parametrize("error", [Exception(utils.string())])
     def test_given_no_matchables(sel, error: Exception) -> None:

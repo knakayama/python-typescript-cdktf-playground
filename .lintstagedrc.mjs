@@ -21,6 +21,7 @@ export default async (files) => [
     if (pyFiles.length === 0) return []
 
     return [
+      `poetry run -C ${appDir} isort`,
       `poetry run -C ${appDir} ruff --fix`,
       `poetry run -C ${appDir} black`,
       `poetry run -C ${appDir} mypy --config-file "${appDir}/pyproject.toml" `,

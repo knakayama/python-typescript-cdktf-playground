@@ -11,8 +11,8 @@ class UserCreationServiceProtocol(Protocol):
 
 
 class UserCreationService:
-    def __init__(self, driver: UserCreationDriverProtocol) -> None:
-        self.driver = driver
+    def __init__(self, user_creation_driver: UserCreationDriverProtocol) -> None:
+        self.user_creation_driver = user_creation_driver
 
     def create(self, input: UserCreationUseCaseInput) -> User:
-        return self.driver.create(User(**input.dict()))
+        return self.user_creation_driver.create(User(**input.dict()))

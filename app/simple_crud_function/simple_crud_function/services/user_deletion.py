@@ -10,8 +10,8 @@ class UserDeletionServiceProtocol(Protocol):
 
 
 class UserDeletionService:
-    def __init__(self, driver: UserDeletionDriverProtocol) -> None:
-        self.driver = driver
+    def __init__(self, user_deletion_driver: UserDeletionDriverProtocol) -> None:
+        self.user_deletion_driver = user_deletion_driver
 
     def delete(self, id: UUID) -> None:
-        self.driver.delete(id)
+        self.user_deletion_driver.delete(id)

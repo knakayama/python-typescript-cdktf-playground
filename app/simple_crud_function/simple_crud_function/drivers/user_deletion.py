@@ -12,14 +12,14 @@ class UserDeletionDriverProtocol(Protocol):
 
 
 class UserDeletionDriver:
-    driver: UserDriver
+    user_driver: UserDriver
 
-    def __init__(self, driver: UserDriver) -> None:
-        self.driver = driver
+    def __init__(self, user_driver: UserDriver) -> None:
+        self.user_driver = user_driver
 
     def delete(self, id: UUID) -> None:
         try:
-            self.driver.table.delete_item(
+            self.user_driver.table.delete_item(
                 Key={
                     "pk": f"user#{id}",
                     "sk": f"user#{id}",

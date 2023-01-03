@@ -11,11 +11,11 @@ class UserDescDriverProtocol(Protocol):
 
 
 class UserDescDriver:
-    def __init__(self, driver: UserDriver) -> None:
-        self.driver = driver
+    def __init__(self, user_driver: UserDriver) -> None:
+        self.user_driver = user_driver
 
     def describe(self, id: UUID) -> Optional[User]:
-        output = self.driver.table.get_item(
+        output = self.user_driver.table.get_item(
             Key={
                 "pk": f"user#{id}",
                 "sk": f"user#{id}",

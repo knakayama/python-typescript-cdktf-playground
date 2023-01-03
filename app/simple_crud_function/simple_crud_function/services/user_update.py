@@ -11,8 +11,8 @@ class UserUpdateServiceProtocol(Protocol):
 
 
 class UserUpdateService:
-    def __init__(self, driver: UserUpdateDriverProtocol) -> None:
-        self.driver = driver
+    def __init__(self, user_update_driver: UserUpdateDriverProtocol) -> None:
+        self.user_update_driver = user_update_driver
 
     def update(self, input: UserUpdateUseCaseInput) -> User:
-        return self.driver.update(User(**input.dict()))
+        return self.user_update_driver.update(User(**input.dict()))

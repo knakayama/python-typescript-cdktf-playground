@@ -1,5 +1,5 @@
 from random import choice
-from typing import Optional, cast
+from typing import Any, Optional, cast
 from uuid import UUID, uuid4
 
 from entities.user import User
@@ -11,6 +11,14 @@ fake = Faker()
 
 def string() -> str:
     return cast(str, fake.pystr())
+
+
+def number() -> int:
+    return cast(int, fake.pyint(max_value=1000))
+
+
+def dictionary() -> dict[str, Any]:
+    return cast(dict[str, Any], fake.pydict())
 
 
 def first_name() -> str:

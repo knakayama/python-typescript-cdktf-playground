@@ -11,11 +11,11 @@ class UserUpdateDriverProtocol(Protocol):
 
 
 class UserUpdateDriver:
-    def __init__(self, driver: UserDriver) -> None:
-        self.driver = driver
+    def __init__(self, user_driver: UserDriver) -> None:
+        self.user_driver = user_driver
 
     def update(self, user: User) -> User:
-        self.driver.table.put_item(
+        self.user_driver.table.put_item(
             Item={
                 "pk": f"user#{user.id}",
                 "sk": f"user#{user.id}",

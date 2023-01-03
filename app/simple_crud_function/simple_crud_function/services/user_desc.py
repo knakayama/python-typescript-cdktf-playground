@@ -11,8 +11,8 @@ class UserDescServiceProtocol(Protocol):
 
 
 class UserDescService:
-    def __init__(self, driver: UserDescDriverProtocol) -> None:
-        self.driver = driver
+    def __init__(self, user_desc_driver: UserDescDriverProtocol) -> None:
+        self.user_desc_driver = user_desc_driver
 
     def describe(self, id: UUID) -> Optional[User]:
-        return self.driver.describe(id)
+        return self.user_desc_driver.describe(id)

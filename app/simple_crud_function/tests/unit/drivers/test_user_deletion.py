@@ -28,11 +28,12 @@ class TestUserDeletionDriver:
         self,
         user_driver: UserDriver,
         monkeypatch: MonkeyPatch,
+        client_error: ClientError,
     ) -> None:
-        def client_error(*_args: object, **_kwargs: object) -> None:
-            raise ClientError  # type: ignore
+        def raise_client_error(*_args: object, **_kwargs: object) -> None:
+            raise client_error
 
-        monkeypatch.setattr(user_driver.table, "delete_item", client_error)
+        monkeypatch.setattr(user_driver.table, "delete_item", raise_client_error)
 
         driver = UserDeletionDriver(user_driver)
 
