@@ -6,7 +6,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from pydantic import ValidationError
 from validators.requests.user_deletion_and_desc import (
-    UserDeletionAndUpdateRequestValidator,
+    UserDeletionAndDescRequestValidator,
 )
 
 
@@ -15,7 +15,7 @@ class TestUserDeletionAndDescRequestValidator:
     def test_given_expected_input(
         self, path_parameters: dict[str, str], body: str
     ) -> None:
-        UserDeletionAndUpdateRequestValidator().parse(
+        UserDeletionAndDescRequestValidator().parse(
             ApiControllerInput(
                 path_parameters=path_parameters,
                 body=body,
@@ -27,7 +27,7 @@ class TestUserDeletionAndDescRequestValidator:
         self, path_parameters: dict[str, Any], body: str
     ) -> None:
         with pytest.raises(ValidationError):
-            UserDeletionAndUpdateRequestValidator().parse(
+            UserDeletionAndDescRequestValidator().parse(
                 ApiControllerInput(
                     path_parameters=path_parameters,
                     body=body,
