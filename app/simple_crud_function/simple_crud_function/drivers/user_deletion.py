@@ -7,7 +7,7 @@ from exceptions.user import UserNotFound
 
 
 class UserDeletionDriverProtocol(Protocol):
-    def delete(self, id: UUID) -> None:
+    def delete(self, user_id: UUID) -> None:
         ...
 
 
@@ -17,12 +17,12 @@ class UserDeletionDriver:
     def __init__(self, user_driver: UserDriver) -> None:
         self.user_driver = user_driver
 
-    def delete(self, id: UUID) -> None:
+    def delete(self, user_id: UUID) -> None:
         try:
             self.user_driver.table.delete_item(
                 Key={
-                    "pk": f"user#{id}",
-                    "sk": f"user#{id}",
+                    "pk": f"user#{user_id}",
+                    "sk": f"user#{user_id}",
                 },
                 ConditionExpression="attribute_exists(#pk) AND attribute_exists(#sk)",
                 ExpressionAttributeNames={
@@ -32,7 +32,7 @@ class UserDeletionDriver:
             )
         except ClientError as error:
             if error.response["Error"]["Code"] == "ConditionalCheckFailedException":
-                raise UserNotFound(id)
+                raise UserNotFound(user_id)
             raise Exception(error)
         except Exception as error:
             raise Exception(error)

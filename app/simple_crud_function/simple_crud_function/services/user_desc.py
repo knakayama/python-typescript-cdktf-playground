@@ -6,7 +6,7 @@ from entities.user import User
 
 
 class UserDescServiceProtocol(Protocol):
-    def describe(self, id: UUID) -> Optional[User]:
+    def describe(self, user_id: UUID) -> Optional[User]:
         ...
 
 
@@ -14,5 +14,5 @@ class UserDescService:
     def __init__(self, user_desc_driver: UserDescDriverProtocol) -> None:
         self.user_desc_driver = user_desc_driver
 
-    def describe(self, id: UUID) -> Optional[User]:
-        return self.user_desc_driver.describe(id)
+    def describe(self, user_id: UUID) -> Optional[User]:
+        return self.user_desc_driver.describe(user_id)

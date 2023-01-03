@@ -8,7 +8,7 @@ class UserUpdateRequestValidator:
     def parse(self, input: ApiControllerInput) -> UserUpdateUseCaseInput:
         return UserUpdateUseCaseInput(
             **dict(
-                input.path_parameters,
+                {"id": input.path_parameters["user_id"]},
                 **json.loads(input.body),
             )
         )

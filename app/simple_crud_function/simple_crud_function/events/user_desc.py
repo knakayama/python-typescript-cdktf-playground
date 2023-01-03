@@ -7,7 +7,9 @@ from events.utils import to_api_controller_input
 from presenters.ok_responses.common import ok_response_builder
 from services.user_desc import UserDescService
 from use_cases.user_desc import UserDescUseCase
-from validators.requests.user_desc import UserDescRequestValidator
+from validators.requests.user_deletion_and_desc import (
+    UserDeletionAndUpdateRequestValidator,
+)
 
 use_case = UserDescUseCase(UserDescService(UserDescDriver(UserDriver())))
 
@@ -16,7 +18,7 @@ def handle(event: APIGatewayProxyEventV2) -> APIGatewayProxyResponseV2:
     return (
         ApiController(
             use_case=use_case,
-            request_validator=UserDescRequestValidator,
+            request_validator=UserDeletionAndUpdateRequestValidator,
             ok_response_builder=ok_response_builder,
         )
         .handle(to_api_controller_input(event))

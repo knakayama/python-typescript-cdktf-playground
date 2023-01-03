@@ -6,7 +6,7 @@ from entities.user import User
 
 
 class UserDescDriverProtocol(Protocol):
-    def describe(self, id: UUID) -> Optional[User]:
+    def describe(self, user_id: UUID) -> Optional[User]:
         ...
 
 
@@ -14,11 +14,11 @@ class UserDescDriver:
     def __init__(self, user_driver: UserDriver) -> None:
         self.user_driver = user_driver
 
-    def describe(self, id: UUID) -> Optional[User]:
+    def describe(self, user_id: UUID) -> Optional[User]:
         output = self.user_driver.table.get_item(
             Key={
-                "pk": f"user#{id}",
-                "sk": f"user#{id}",
+                "pk": f"user#{user_id}",
+                "sk": f"user#{user_id}",
             },
         )
 
