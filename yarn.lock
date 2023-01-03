@@ -3383,9 +3383,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"python-aws-playground@workspace:.":
+"python-typescript-cdktf-playground@workspace:.":
   version: 0.0.0-use.local
-  resolution: "python-aws-playground@workspace:."
+  resolution: "python-typescript-cdktf-playground@workspace:."
   dependencies:
     "@cdktf/provider-aws": ^11.0.0
     "@swc/core": ^1.3.24

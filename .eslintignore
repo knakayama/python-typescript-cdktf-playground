@@ -5,3 +5,4 @@ src/lib
 .yarn/
 tmp/
 yarn.lock
+*.md

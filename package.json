@@ -1,5 +1,5 @@
 {
-  "name": "python-aws-playground",
+  "name": "python-typescript-cdktf-playground",
   "packageManager": "yarn@3.3.1",
   "version": "0.0.1",
   "description": "Python AWS Playground",
