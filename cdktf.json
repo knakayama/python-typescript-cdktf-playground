@@ -1,6 +1,6 @@
 {
   "language": "typescript",
-  "app": "npx ts-node src/main.ts",
+  "app": "yarn run ts-node-esm --experimental-specifier-resolution=node src/main.ts",
   "sendCrashReports": "false",
   "terraformProviders": [
     {

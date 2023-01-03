@@ -14,7 +14,8 @@
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "incremental": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "noImplicitOverride": false,
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "cdktf.out"]

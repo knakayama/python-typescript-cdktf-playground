@@ -10,12 +10,14 @@
     "lint:prettier": "prettier --check '**/*.{ts,yaml,md,json,mts,js,cjs,mjs,toml}'",
     "lint": "yarn lint:ec && yarn lint:prettier && yarn lint:eslint",
     "gitleaks": "gitleaks detect -v",
-    "cdktf": "cdktf",
-    "cdktf:get": "cdktf get -o src/lib",
-    "cdktf:diff": "cdktf diff api",
-    "cdktf:deploy": "(cd cdktf.out/stacks/api && terraform apply plan)",
-    "build:app": "./scripts/buildApp.mts",
-    "build:layer": "./scripts/buildLayer.mts",
+    "infra": "cdktf",
+    "infra:get": "cdktf get -o src/lib",
+    "infra:synth": "yarn cdktf synth",
+    "infra:init": "(cd cdktf.out/stacks/$@ && terraform init)",
+    "infra:diff": "(cd cdktf.out/stacks/$@ && terraform plan)",
+    "infra:deploy": "(cd cdktf.out/stacks/$@ && terraform apply plan)",
+    "app:build": "./scripts/buildApp.mts",
+    "app:build:layer": "./scripts/buildLayer.mts",
     "postinstall": "husky install"
   },
   "engines": {
@@ -31,7 +33,7 @@
     "@types/node": "^18.6.3",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
-    "cdktf-cli": "^0.14.1",
+    "cdktf-cli": "^v0.15.0-pre.38",
     "editorconfig-checker": "^4.0.2",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
@@ -52,7 +54,7 @@
   },
   "dependencies": {
     "@cdktf/provider-aws": "^11.0.0",
-    "cdktf": "^0.14.1",
+    "cdktf": "^v0.15.0-pre.38",
     "constructs": "^10.1.65",
     "param-case": "^3.0.4",
     "snake-case": "^3.0.4"
