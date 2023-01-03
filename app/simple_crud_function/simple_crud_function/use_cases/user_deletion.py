@@ -7,8 +7,8 @@ class UserDeletionUseCaseInput(BaseModel):
 
 
 class UserDeletionUseCase:
-    def __init__(self, service: UserDeletionServiceProtocol) -> None:
-        self.service = service
+    def __init__(self, user_deletion_service: UserDeletionServiceProtocol) -> None:
+        self.user_deletion_service = user_deletion_service
 
     def execute(self, input: UserDeletionUseCaseInput) -> None:
-        self.service.delete(input.id)
+        self.user_deletion_service.delete(input.id)

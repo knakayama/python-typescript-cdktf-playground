@@ -25,8 +25,8 @@ class UserUpdateUseCaseInput(BaseModel):
 
 
 class UserUpdateUseCase:
-    def __init__(self, service: UserUpdateServiceProtocol) -> None:
-        self.service = service
+    def __init__(self, user_update_service: UserUpdateServiceProtocol) -> None:
+        self.user_update_service = user_update_service
 
     def execute(self, input: UserUpdateUseCaseInput) -> User:
-        return self.service.update(input)
+        return self.user_update_service.update(input)

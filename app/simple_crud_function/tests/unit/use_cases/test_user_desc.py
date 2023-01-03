@@ -25,7 +25,9 @@ class TestUserDescUseCase:
     ) -> None:
         user = utils.user()
         monkeypatch.setattr(
-            user_desc_use_case.service, "describe", lambda *_args, **_kwargs: user
+            user_desc_use_case.user_desc_service,
+            "describe",
+            lambda *_args, **_kwargs: user,
         )
 
         assert user_desc_use_case.execute(UserDescUseCaseInput(id=user.id)) == user
