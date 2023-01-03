@@ -2,7 +2,7 @@ import json
 
 import pytest
 from exceptions.user import UserNotFound
-from presenters.error_response import error_response_builder
+from presenters.error_responses.response_builder import error_response_builder
 from presenters.http_status_code import HttpStatusCode
 from pydantic import BaseModel, ValidationError
 

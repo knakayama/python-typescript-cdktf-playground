@@ -2,7 +2,7 @@ from typing import Generic
 
 from controllers.protocols import ApiControllerInput
 from modules.type_hints import ContravariantType, CovariantType
-from presenters.error_response import error_response_builder
+from presenters.error_responses.response_builder import error_response_builder
 from presenters.protocols import OKResponseBuilderFactory, ResponseBuilderProtocol
 from use_cases.protocols import UseCaseProtocol
 from validators.requests.protocols import RequestValidatorFactory

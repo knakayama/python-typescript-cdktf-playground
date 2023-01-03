@@ -2,21 +2,21 @@ from aws_lambda_typing.events import APIGatewayProxyEventV2
 from aws_lambda_typing.responses import APIGatewayProxyResponseV2
 from controllers.api import ApiController
 from drivers.user import UserDriver
-from drivers.user_creation import UserCreationDriver
+from drivers.user_update import UserUpdateDriver
 from events.utils import to_api_controller_input
 from presenters.ok_responses.common import ok_response_builder
-from services.user_creation import UserCreationService
-from use_cases.user_creation import UserCreationUseCase
-from validators.requests.user_creation import UserCreationRequestValidator
+from services.user_update import UserUpdateService
+from use_cases.user_update import UserUpdateUseCase
+from validators.requests.user_update import UserUpdateRequestValidator
 
-use_case = UserCreationUseCase(UserCreationService(UserCreationDriver(UserDriver())))
+use_case = UserUpdateUseCase(UserUpdateService(UserUpdateDriver(UserDriver())))
 
 
 def handle(event: APIGatewayProxyEventV2) -> APIGatewayProxyResponseV2:
     return (
         ApiController(
             use_case=use_case,
-            request_validator=UserCreationRequestValidator,
+            request_validator=UserUpdateRequestValidator,
             ok_response_builder=ok_response_builder,
         )
         .handle(to_api_controller_input(event))

@@ -2,11 +2,11 @@ from typing import Generic
 
 from aws_lambda_typing.responses import APIGatewayProxyResponseV2
 from modules.type_hints import VariantType
-from presenters.ok_response import OKResponseBuilder
+from presenters.ok_responses.response_builder import OKResponseBuilder
 from presenters.protocols import ResponseBuilderProtocol
 
 
-class OKSimpleResponseBuilder(Generic[VariantType]):
+class CommonResponseBuilder(Generic[VariantType]):
     def __init__(self, input: VariantType) -> None:
         self.response_builder = OKResponseBuilder(input)
 
@@ -15,4 +15,4 @@ class OKSimpleResponseBuilder(Generic[VariantType]):
 
 
 def ok_response_builder(input: VariantType) -> ResponseBuilderProtocol:
-    return OKSimpleResponseBuilder(input)
+    return CommonResponseBuilder(input)

@@ -3,6 +3,10 @@ from dataclasses import dataclass
 
 from aws_lambda_typing.responses import APIGatewayProxyResponseV2
 from exceptions.user import UserNotFound
+from presenters.error_responses.common_error import CommonErrorResponseBuilder
+from presenters.error_responses.internal_server_error import (
+    InternalServerErrorResponseBuilder,
+)
 from presenters.http_status_code import HttpStatusCode
 from presenters.protocols import ResponseBuilderProtocol
 from pydantic import ValidationError
@@ -23,35 +27,6 @@ class ErrorResponseBuilder:
         return APIGatewayProxyResponseV2(
             statusCode=self.status_code, body=json.dumps(self.response_body.__dict__)
         )
-
-
-class CommonErrorResponseBuilder:
-    def __init__(self, error: Exception, status_code: int) -> None:
-        self.response_builder = ErrorResponseBuilder(
-            response_body=ErrorResponseBody(
-                code=error.__class__.__name__,
-                desc=f"{error}",
-            ),
-            status_code=status_code,
-        )
-
-    def serialize(self) -> APIGatewayProxyResponseV2:
-        return self.response_builder.serialize()
-
-
-class InternalServerErrorResponseBuilder:
-    def __init__(self, error: Exception) -> None:
-        print(error)
-
-        self.response_builder = ErrorResponseBuilder(
-            response_body=ErrorResponseBody(
-                code="InternalServerError", desc="Something wrong occurred."
-            ),
-            status_code=HttpStatusCode.InternalServerError,
-        )
-
-    def serialize(self) -> APIGatewayProxyResponseV2:
-        return self.response_builder.serialize()
 
 
 def error_response_builder(error: Exception) -> ResponseBuilderProtocol:

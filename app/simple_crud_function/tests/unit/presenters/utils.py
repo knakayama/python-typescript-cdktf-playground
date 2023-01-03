@@ -1,6 +1,6 @@
 from typing import Any
 
-from presenters.error_response import ErrorResponseBody
+from presenters.error_responses.response_builder import ErrorResponseBody
 
 
 def to_error_response_body_dict(error: Exception) -> dict[str, Any]:
