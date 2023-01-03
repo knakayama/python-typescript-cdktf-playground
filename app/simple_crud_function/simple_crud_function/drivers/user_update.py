@@ -2,7 +2,6 @@ from typing import Protocol
 
 from drivers.user import UserDriver
 from entities.user import User
-from pydash import omit
 
 
 class UserUpdateDriverProtocol(Protocol):
@@ -21,7 +20,7 @@ class UserUpdateDriver:
                 "sk": f"user#{user.id}",
                 "gsi1": user.name,
                 "id": f"{user.id}",
-                **omit(user.dict(), "id"),
+                **user.dict(exclude={"id"}),
             },
             ConditionExpression="attribute_exists(#pk) AND attribute_exists(#sk)",
             ExpressionAttributeNames={

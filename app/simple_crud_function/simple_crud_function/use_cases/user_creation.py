@@ -28,4 +28,4 @@ class UserCreationUseCase:
         self.user_creation_service = user_creation_service
 
     def execute(self, input: UserCreationUseCaseInput) -> User:
-        return self.user_creation_service.create(input)
+        return self.user_creation_service.create(**input.dict())

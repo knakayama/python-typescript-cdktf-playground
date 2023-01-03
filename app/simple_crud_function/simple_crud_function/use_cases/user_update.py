@@ -29,4 +29,4 @@ class UserUpdateUseCase:
         self.user_update_service = user_update_service
 
     def execute(self, input: UserUpdateUseCaseInput) -> User:
-        return self.user_update_service.update(input)
+        return self.user_update_service.update(**input.dict())
