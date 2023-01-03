@@ -24,6 +24,6 @@ class NoContentResponseBuilder(Generic[VariantType]):
 
 
 def ok_response_builder(
-    _input: Optional[VariantType] = None,
+    _input: Optional[VariantType],
 ) -> ResponseBuilderProtocol:
     return NoContentResponseBuilder(NoContent())
