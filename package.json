@@ -2,14 +2,14 @@
   "name": "python-typescript-cdktf-playground",
   "packageManager": "yarn@3.3.1",
   "version": "0.0.1",
-  "description": "Python AWS Playground",
+  "description": "Python Typescript CDKTF Playground",
   "scripts": {
-    "lint:app": "./scripts/lintApp.mts",
     "lint:ec": "ec",
     "lint:eslint": "eslint --ext .ts,.mts,.mjs,.js,.cjs .",
     "lint:prettier": "prettier --check '**/*.{ts,yaml,md,json,mts,js,cjs,mjs,toml}'",
     "lint": "yarn lint:ec && yarn lint:prettier && yarn lint:eslint",
     "gitleaks": "gitleaks detect -v",
+    "postinstall": "husky install",
     "infra": "cdktf",
     "infra:get": "yarn cdktf get -o ./src/lib",
     "infra:synth": "yarn cdktf synth",
@@ -18,9 +18,9 @@
     "infra:synth:plan": "yarn infra:synth && yarn infra:plan",
     "infra:apply": "(cd cdktf.out/stacks/$@ && terraform apply plan)",
     "infra:plan:apply": "(cd cdktf.out/stacks/$@ && terraform plan -out=plan && terraform apply plan)",
-    "app:build": "./scripts/buildApp.mts",
-    "app:build:layer": "./scripts/buildLayer.mts",
-    "postinstall": "husky install"
+    "infra:synth:plan:apply": "yarn infra:synth && yarn infra:plan:apply",
+    "app:lint": "./scripts/lintApp.mts",
+    "app:build": "./scripts/buildApp.mts && ./scripts/buildLayer.mts"
   },
   "engines": {
     "node": ">=19.3.0",
