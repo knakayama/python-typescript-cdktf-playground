@@ -11,17 +11,19 @@
     "lint": "yarn lint:ec && yarn lint:prettier && yarn lint:eslint",
     "gitleaks": "gitleaks detect -v",
     "infra": "cdktf",
-    "infra:get": "cdktf get -o src/lib",
+    "infra:get": "yarn cdktf get -o ./src/lib",
     "infra:synth": "yarn cdktf synth",
     "infra:init": "(cd cdktf.out/stacks/$@ && terraform init)",
-    "infra:diff": "(cd cdktf.out/stacks/$@ && terraform plan)",
-    "infra:deploy": "(cd cdktf.out/stacks/$@ && terraform apply plan)",
+    "infra:plan": "(cd cdktf.out/stacks/$@ && terraform plan -out=plan)",
+    "infra:synth:plan": "yarn infra:synth && yarn infra:plan",
+    "infra:apply": "(cd cdktf.out/stacks/$@ && terraform apply plan)",
+    "infra:plan:apply": "(cd cdktf.out/stacks/$@ && terraform plan -out=plan && terraform apply plan)",
     "app:build": "./scripts/buildApp.mts",
     "app:build:layer": "./scripts/buildLayer.mts",
     "postinstall": "husky install"
   },
   "engines": {
-    "node": ">=18.7.0",
+    "node": ">=19.3.0",
     "npm": "please_use_yarn_instead"
   },
   "private": true,
