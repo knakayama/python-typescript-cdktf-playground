@@ -1,3 +1,4 @@
+from aws_lambda_powertools.utilities.typing import LambdaContext
 from aws_lambda_typing.events import APIGatewayProxyEventV2
 from aws_lambda_typing.responses import APIGatewayProxyResponseV2
 from controllers.api import ApiController
@@ -12,7 +13,9 @@ from validators.requests.user_update import UserUpdateRequestValidator
 use_case = UserUpdateUseCase(UserUpdateService(UserUpdateDriver(UserDriver())))
 
 
-def handle(event: APIGatewayProxyEventV2) -> APIGatewayProxyResponseV2:
+def handle(
+    event: APIGatewayProxyEventV2, _context: LambdaContext
+) -> APIGatewayProxyResponseV2:
     return (
         ApiController(
             use_case=use_case,
