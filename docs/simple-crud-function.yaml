@@ -1,0 +1,344 @@
+openapi: 3.0.3
+info:
+  title: simple-crud-function
+  version: 0.0.1
+  description: |
+    Simple CRUD function.
+servers:
+  - url: 'https://api.example.com'
+
+paths:
+  '/users':
+    post:
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "2.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "${userCreationInvokeArn}"
+        connectionType: "INTERNET"
+      summary: Create a new user
+      description: |
+        This endpoint creates a new user.
+      tags:
+        - User
+      operationId: post-users
+      responses:
+        '200':
+          description: |
+            A new user has been created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreationUpdateAndDescriptionResponse'
+              examples:
+                "A user who doesn't have middle name":
+                  value:
+                    first_name: "John"
+                    middle_name: null
+                    last_name: "Doe"
+                    age: 34
+                    address: "X,Y,Z"
+                    zip_code: "111-2222"
+                    country: "USA"
+                    name: "John Doe"
+                    id: "90402dae-590a-4f0f-9311-1abfd252c76f"
+                    email: "john@example.com"
+                "A user having middle name":
+                  value:
+                    first_name: "John"
+                    middle_name: "X"
+                    last_name: "Doe"
+                    age: 34
+                    address: "X,Y,Z"
+                    zip_code: "111-2222"
+                    country: "USA"
+                    name: "John, X, Doe"
+                    id: "90402dae-590a-4f0f-9311-1abfd252c76f"
+                    email: "john@example.com"
+        '400':
+          $ref: '#/components/responses/BadRequestResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerErrorResponse'
+  '/users/{user_id}':
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    patch:
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "2.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "${userUpdateInvokeArn}"
+        connectionType: "INTERNET"
+      summary: Update a new user
+      description: |
+        This endpoint updates a new user.
+      tags:
+        - User
+      operationId: patch-users-user-id
+      responses:
+        '200':
+          description: |
+            A user has been updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreationUpdateAndDescriptionResponse'
+              examples:
+                "A user who doesn't have middle name":
+                  value:
+                    first_name: "John"
+                    middle_name: null
+                    last_name: "Doe"
+                    age: 34
+                    address: "X,Y,Z"
+                    zip_code: "111-2222"
+                    country: "USA"
+                    name: "John Doe"
+                    id: "90402dae-590a-4f0f-9311-1abfd252c76f"
+                    email: "john@example.com"
+                "A user having middle name":
+                  value:
+                    first_name: "John"
+                    middle_name: "X"
+                    last_name: "Doe"
+                    age: 34
+                    address: "X,Y,Z"
+                    zip_code: "111-2222"
+                    country: "USA"
+                    name: "John, X, Doe"
+                    id: "90402dae-590a-4f0f-9311-1abfd252c76f"
+                    email: "john@example.com"
+        '400':
+          $ref: '#/components/responses/BadRequestResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerErrorResponse'
+    get:
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "2.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "${userDescInvokeArn}"
+        connectionType: "INTERNET"
+      summary: Describe a new user
+      description: |
+        This endpoint describes a new user.
+      tags:
+        - User
+      operationId: get-users-user-id
+      responses:
+        '200':
+          description: |
+            The detail of a user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreationUpdateAndDescriptionResponse'
+              examples:
+                "A user who doesn't have middle name":
+                  value:
+                    first_name: "John"
+                    middle_name: null
+                    last_name: "Doe"
+                    age: 34
+                    address: "X,Y,Z"
+                    zip_code: "111-2222"
+                    country: "USA"
+                    name: "John Doe"
+                    id: "90402dae-590a-4f0f-9311-1abfd252c76f"
+                    email: "john@example.com"
+                "A user having middle name":
+                  value:
+                    first_name: "John"
+                    middle_name: "X"
+                    last_name: "Doe"
+                    age: 34
+                    address: "X,Y,Z"
+                    zip_code: "111-2222"
+                    country: "USA"
+                    name: "John, X, Doe"
+                    id: "90402dae-590a-4f0f-9311-1abfd252c76f"
+                    email: "john@example.com"
+        '400':
+          $ref: '#/components/responses/BadRequestResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerErrorResponse'
+    delete:
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "2.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "${userDeletionInvokeArn}"
+        connectionType: "INTERNET"
+      summary: Delete a user
+      description: |
+        This endpoint deletes a user.
+      tags:
+        - User
+      operationId: delete-users-user-id
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerErrorResponse'
+
+components:
+  responses:
+    BadRequestResponse:
+      description: |
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBaseModel'
+
+    NotFoundResponse:
+      description: |
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBaseModel'
+
+    InternalServerErrorResponse:
+      description: |
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBaseModel'
+
+    NoContentResponse:
+      description: |
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
+
+  parameters:
+    UserId:
+      name: user_id
+      description: |
+        User Id.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '5f892c76-69fd-4695-b063-f98b4fdb3d23'
+
+  schemas:
+    ErrorBaseModel:
+      type: object
+      required:
+        - code
+        - desc
+      properties:
+        code:
+          type: string
+          description: |
+            Code about an error happening.
+        description:
+          type: string
+          description: |
+            Description about an error happening.
+      example:
+        code: 'InternalServerError'
+        desc: 'Something wrong occurred.'
+
+    UserId:
+      type: string
+      format: uuidV4
+      description: |
+        User Id.
+
+    FirstName:
+      type: string
+      description: |
+        First name.
+
+    MiddleName:
+      type: string
+      description: |
+        Middle name.
+
+    LastName:
+      type: string
+      description: |
+        Last name.
+
+    Age:
+      type: number
+      description: |
+        Age.
+
+    Address:
+      type: string
+      description: |
+        Address.
+
+    ZipCode:
+      type: string
+      description: |
+        Zip code.
+
+    Country:
+      type: string
+      enum:
+        - JPN
+        - PHL
+        - USA
+      description: |
+        One of country codes.
+
+    Name:
+      type: string
+      description: |
+        Name.
+
+    Email:
+      type: string
+      description: |
+        Email address.
+
+    UserCreationUpdateAndDescriptionResponse:
+      type: object
+      required:
+        - first_name
+        - middle_name
+        - last_name
+        - age
+        - address
+        - zip_code
+        - country
+        - name
+        - id
+        - email
+      properties:
+        first_name:
+          $ref: '#/components/schemas/FirstName'
+        middle_name:
+          allOf:
+            - nullable: true
+            - $ref: '#/components/schemas/MiddleName'
+        last_name:
+          $ref: '#/components/schemas/LastName'
+        age:
+          $ref: '#/components/schemas/Age'
+        address:
+          $ref: '#/components/schemas/Address'
+        zip_code:
+          $ref: '#/components/schemas/ZipCode'
+        country:
+          $ref: '#/components/schemas/Country'
+        name:
+          $ref: '#/components/schemas/Name'
+        id:
+          $ref: '#/components/schemas/UserId'
+        email:
+          $ref: '#/components/schemas/Email'

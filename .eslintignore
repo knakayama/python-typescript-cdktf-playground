@@ -6,3 +6,4 @@ src/lib
 tmp/
 yarn.lock
 *.md
+*.yaml
