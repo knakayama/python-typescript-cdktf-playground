@@ -16,6 +16,7 @@
     "incremental": true,
     "outDir": "./dist",
     "noImplicitOverride": false,
+    "importsNotUsedAsValues": "preserve",
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "cdktf.out"]
